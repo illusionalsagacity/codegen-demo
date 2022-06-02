@@ -1,0 +1,16 @@
+{
+  "name": "codegen-demo",
+  "version": "1.0.0",
+  "description": "demo of various typescript codegen",
+  "main": "index.js",
+  "author": "Rob <illusionalsagacity@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "packageManager": "yarn@3.2.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "esbuild": "^0.14.42"
+  }
+}

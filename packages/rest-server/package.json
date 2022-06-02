@@ -1,0 +1,28 @@
+{
+  "name": "rest-server",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "demo of various typescript codegen",
+  "main": "index.ts",
+  "author": "Rob <illusionalsagacity@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "packageManager": "yarn@3.2.0",
+  "scripts": {
+    "build": "./build.cjs",
+    "start": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "@fastify/sensible": "^4.1.0",
+    "@fastify/swagger": "^6.1.0",
+    "fastify": "^3.29.0",
+    "fastify-openapi-glue": "^2.6.9",
+    "fluent-json-schema": "^3.1.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^1.0.0",
+    "esbuild": "^0.14.42",
+    "esbuild-node-externals": "^1.4.1",
+    "typescript": "^4.7.2"
+  }
+}

@@ -1,0 +1,41 @@
+*.log
+*.swp
+*.zip
+*.pem
+*.pfx
+
+tmp
+.docz
+
+# API keys and secrets
+.env
+.env.development
+
+# Dependency directory
+node_modules
+
+# OS metadata
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# Ignore built ts files
+build
+.cache
+dist-static
+
+/packages/**/dist
+
+**/coverage
+
+junit.xml
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+.history

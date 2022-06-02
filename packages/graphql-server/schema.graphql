@@ -1,0 +1,33 @@
+scalar Void
+
+type Todo {
+  id: ID!
+  title: String!
+  notes: String
+}
+
+input DeleteTodoInput {
+  id: ID!
+}
+
+input ModifyTodoInput {
+  id: ID!
+  title: String
+  notes: String
+}
+
+input CreateTodoInput {
+  title: String!
+  notes: String
+}
+
+type Mutation {
+  deleteTodo(input: DeleteTodoInput!): Void
+  modifyTodo(input: ModifyTodoInput!): Todo!
+  createTodo(input: CreateTodoInput!): Todo!
+}
+
+type Query {
+  allTodos: [Todo!]!
+  todoById(id: ID!): Todo
+}

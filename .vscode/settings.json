@@ -1,0 +1,17 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    ".yarn/cache/*.zip": true,
+    ".yarn/install-state.gz": true
+  },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json": "file:///Users/RMeyer/Source/github.com/illusionalsagacity/codegen-demo/packages/rest-server/schema.yaml"
+  }
+}

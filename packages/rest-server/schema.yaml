@@ -1,0 +1,88 @@
+openapi: "3.1.0"
+info:
+  title: Sample TODO API
+  version: 0.1.0
+  description: test api please ignore
+
+components:
+  responses:
+    EmptyResponse:
+      description: A response with nothing
+    TodosResponse:
+      description: A response containing an array of Todos
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+    TodoResponse:
+      description: A response containing a Todo
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/components/schemas/Todo'
+  parameters:
+    idParam:
+      description: IdParam
+      name: IdParam
+      in: path
+      schema:
+        type: string
+      required: true
+  schemas:
+    Todo:
+      $id: Todo
+      description: A todo
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        notes:
+          type: string
+
+paths:
+  /todo/{id}:
+    delete:
+      operationId: deleteTodo
+      summary: Delete a Todo
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+    put:
+      operationId: putTodo
+      summary: Modify a Todo
+      responses:
+        '200':
+          $ref: '#/components/responses/TodoResponse'
+    get:
+      operationId: getTodo
+      summary: Get a Todo
+      responses:
+        '200':
+          $ref: '#/components/responses/TodoResponse'
+  /todo:
+    post:
+      operationId: postTodo
+      summary: Create a Todo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          $ref: '#/components/responses/TodoResponse'
+    get:
+      operationId: getTodos
+      summary: Get a list of Todos
+      responses:
+        '200':
+          $ref: '#/components/responses/TodosResponse'
