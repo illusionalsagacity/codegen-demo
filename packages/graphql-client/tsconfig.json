@@ -1,9 +1,10 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "strict": true,
+    "target": "ES2022",
+    "module": "CommonJS"
   },
-  "files": ["src/index.ts"]
+  "include": ["index.ts"]
 }

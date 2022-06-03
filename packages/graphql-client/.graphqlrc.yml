@@ -1,0 +1,23 @@
+overwrite: true
+
+require:
+  - ts-node/register
+
+schema:
+  - "../graphql-server/schema.graphql"
+
+documents:
+  - "./operations.graphql"
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+
+extensions:
+  codegen:
+    generates:
+      types.ts:
+        plugins:
+          - typescript
+          - typescript-operations
+          - typescript-generic-sdk

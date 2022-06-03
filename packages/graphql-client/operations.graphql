@@ -1,0 +1,11 @@
+query AllTodos {
+  allTodos {
+    id
+    title
+    notes
+  }
+}
+
+mutation DeleteTodo($input: DeleteTodoInput!) {
+  deleteTodo(input: $input)
+}
