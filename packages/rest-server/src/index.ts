@@ -21,7 +21,9 @@ app.register(sensible).register(openapiGlue, {
     putTodo: unimplementedHandler,
     getTodo: unimplementedHandler,
     postTodo: unimplementedHandler,
-    getTodos: unimplementedHandler,
+    getTodos: (_request: FastifyRequest, reply: FastifyReply) => {
+      reply.code(200).send(JSON.stringify([]));
+    },
   },
 });
 

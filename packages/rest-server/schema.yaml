@@ -1,88 +1,123 @@
-openapi: "3.1.0"
+openapi: 3.1.0
+servers:
+  - url: http://localhost:3000
 info:
   title: Sample TODO API
-  version: 0.1.0
+  version: "0.1.0"
   description: test api please ignore
 
+paths:
+  /todo/{todoId}:
+    delete:
+      operationId: deleteTodo
+      summary: Delete a Todo
+      parameters:
+        - $ref: "#/components/parameters/todoId"
+      responses:
+        204:
+          description: No Content
+          $ref: '#/components/responses/EmptyResponse'
+    put:
+      operationId: putTodo
+      summary: Modify a Todo
+      requestBody:
+        $ref: '#/components/requestBodies/TodoRequest'
+      parameters:
+        - $ref: "#/components/parameters/todoId"
+      responses:
+        200:
+          $ref: '#/components/responses/TodoResponse'
+    get:
+      operationId: getTodo
+      summary: Get a Todo
+      parameters:
+        - $ref: "#/components/parameters/todoId"
+      responses:
+        200:
+          $ref: '#/components/responses/TodoResponse'
+  /todo:
+    post:
+      operationId: postTodo
+      summary: Create a Todo
+      parameters: []
+      requestBody:
+        $ref: '#/components/requestBodies/TodoRequest'
+      responses:
+        200:
+          $ref: '#/components/responses/TodoResponse'
+    get:
+      operationId: getTodos
+      summary: Get a list of Todos
+      parameters: []
+      responses:
+        200:
+          $ref: '#/components/responses/TodosResponse'
+
+
 components:
+  schemas:
+    Todo:
+      type: object
+      description: A todo
+      required:
+        - id
+        - title
+        - notes
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        notes:
+          type: string
+      example:
+        id: "cf467a97-d42f-461d-a0ad-7c53c1ff3abe"
+        title: "Finish the thing"
+        description: "Finish that thing you needed to do"
+
+  requestBodies:
+    TodoRequest:
+      description: A request body with a Todo in it
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Todo"
+
   responses:
     EmptyResponse:
       description: A response with nothing
     TodosResponse:
-      description: A response containing an array of Todos
+      description: success
       content:
         application/json:
           schema:
             type: object
+            required:
+              - data
             properties:
               data:
                 type: array
                 items:
                   $ref: '#/components/schemas/Todo'
     TodoResponse:
-      description: A response containing a Todo
+      description: success
       content:
         application/json:
           schema:
             type: object
+            required:
+              - data
             properties:
               data:
                 $ref: '#/components/schemas/Todo'
+
   parameters:
-    idParam:
-      description: IdParam
-      name: IdParam
+    todoId:
+      description: Todo ID
+      name: todoId
       in: path
       schema:
         type: string
+        format: uuid
       required: true
-  schemas:
-    Todo:
-      $id: Todo
-      description: A todo
-      properties:
-        id:
-          type: string
-        title:
-          type: string
-        notes:
-          type: string
-
-paths:
-  /todo/{id}:
-    delete:
-      operationId: deleteTodo
-      summary: Delete a Todo
-      responses:
-        '204':
-          $ref: '#/components/responses/EmptyResponse'
-    put:
-      operationId: putTodo
-      summary: Modify a Todo
-      responses:
-        '200':
-          $ref: '#/components/responses/TodoResponse'
-    get:
-      operationId: getTodo
-      summary: Get a Todo
-      responses:
-        '200':
-          $ref: '#/components/responses/TodoResponse'
-  /todo:
-    post:
-      operationId: postTodo
-      summary: Create a Todo
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todo'
-      responses:
-        '200':
-          $ref: '#/components/responses/TodoResponse'
-    get:
-      operationId: getTodos
-      summary: Get a list of Todos
-      responses:
-        '200':
-          $ref: '#/components/responses/TodosResponse'
