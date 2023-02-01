@@ -97,14 +97,14 @@ export const DeleteTodoDocument = gql`
   deleteTodo(input: $input)
 }
     `;
-export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
-export function getSdk<C>(requester: Requester<C>) {
+export type Requester<C = {}, E = unknown> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
+export function getSdk<C, E>(requester: Requester<C, E>) {
   return {
     AllTodos(variables?: AllTodosQueryVariables, options?: C): Promise<AllTodosQuery> {
-      return requester<AllTodosQuery, AllTodosQueryVariables>(AllTodosDocument, variables, options);
+      return requester<AllTodosQuery, AllTodosQueryVariables>(AllTodosDocument, variables, options) as Promise<AllTodosQuery>;
     },
     DeleteTodo(variables: DeleteTodoMutationVariables, options?: C): Promise<DeleteTodoMutation> {
-      return requester<DeleteTodoMutation, DeleteTodoMutationVariables>(DeleteTodoDocument, variables, options);
+      return requester<DeleteTodoMutation, DeleteTodoMutationVariables>(DeleteTodoDocument, variables, options) as Promise<DeleteTodoMutation>;
     }
   };
 }

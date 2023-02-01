@@ -71,10 +71,6 @@ components:
           type: string
         notes:
           type: string
-      example:
-        id: "cf467a97-d42f-461d-a0ad-7c53c1ff3abe"
-        title: "Finish the thing"
-        description: "Finish that thing you needed to do"
 
   requestBodies:
     TodoRequest:
