@@ -15,7 +15,6 @@ const unimplementedHandler = (
 const app = fastify({ logger: true });
 app.register(sensible).register(openapiGlue, {
   specification: path.resolve(process.cwd(), "schema.yaml"),
-  noAdditional: true,
   service: {
     deleteTodo: unimplementedHandler,
     putTodo: unimplementedHandler,
