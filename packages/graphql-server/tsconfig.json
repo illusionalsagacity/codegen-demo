@@ -3,6 +3,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
     "strict": true,
     "module": "ES2022"
   }

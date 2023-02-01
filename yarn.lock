@@ -684,6 +684,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fastify/cors@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@fastify/cors@npm:7.0.0"
+  dependencies:
+    fastify-plugin: ^3.0.0
+    vary: ^1.1.2
+  checksum: 1885eb60b6a64dc91c8ca47708b60de371982d8224e801d7ed60bf821bd045d0c99917c0cb7544dccd9ad1a3dd72368244f2ec2f58bc5fa46d10fe95ad43283a
+  languageName: node
+  linkType: hard
+
 "@fastify/error@npm:^2.0.0":
   version: 2.0.0
   resolution: "@fastify/error@npm:2.0.0"
@@ -4478,6 +4488,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "graphql-server@workspace:packages/graphql-server"
   dependencies:
+    "@fastify/cors": ^7.0.0
     "@graphql-cli/codegen": ^2.2.3
     "@graphql-codegen/cli": ^2.6.0
     "@graphql-codegen/typescript": ^2.4.0
