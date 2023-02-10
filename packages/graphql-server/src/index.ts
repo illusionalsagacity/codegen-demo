@@ -60,7 +60,12 @@ async function main() {
   app.post("/", async function (req, res) {
     try {
       assertIsQueryRequest(req.body);
-      const response = await res.graphql(req.body.query);
+      const response = await res.graphql(
+        req.body.query,
+        {},
+        req.body.variables,
+        req.body.operationName
+      );
       res.code(200).send(response);
     } catch {
       res.code(500).send("Internal Server Error");
